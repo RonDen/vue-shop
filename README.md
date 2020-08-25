@@ -1,37 +1,42 @@
 # vue-shop
 
 #### 介绍
+
 摸鱼六佬的前端项目，学习构建电商系统前端网站
 
-#### 软件架构
-软件架构说明
+项目结构
+```
+$ tree .
+vue-shop
+├─code  项目代码
+├─docs  文档、学习资料、任务计划等
+└─img   需要的图片
+```
 
 
-#### 安装教程
+#### 本周学习任务
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. 了解前端基础知识，了解node和vue
+2. 学习git基本操作与github或码云的使用
+3. 至少看完前10个视频
 
-#### 使用说明
+- [ ] 01.Vue项目实战学习目标
+- [ ] 02.Vue项目实战概述
+- [ ] 03电商后台管理系统的功能
+- [ ] 04开发模式:前后端分离
+- [ ] 05项目初始化
+- [ ] 06初始化Git远程仓库
+- [ ] 07本地项目托管到GitHub或码云中
+- [ ] 08后台项目的环境安装配置
+- [ ] 09测试后台接口是否正常
+- [ ] 10.登与退出功能
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 参考资源
 
-#### 参与贡献
+[B站学习课程](https://www.bilibili.com/video/av90846070)
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+[前端学习参考路线](https://www.cnblogs.com/qianguyihao/p/8776837.html)
 
+[MDN官方文档](https://developer.mozilla.org/zh-CN/)
 
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+[Vue中文文档](https://cn.vuejs.org/)
