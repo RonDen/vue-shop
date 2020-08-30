@@ -45,8 +45,8 @@ export default {
     return {
       // 登录表单的数据绑定对象
       loginForm: {
-        username: "zhangsan",
-        password: "123"
+        username: "admin",
+        password: "123456"
       },
       // 验证表单是否合法规则对象
       loginFormRules: {
@@ -87,9 +87,17 @@ export default {
           const { data: res } = await this.$http.post("login", this.loginForm);
           console.log(res);
           if (res.meta.status !== 200) {
-            return this.$message.error('登录失败，请检查用户名密码是否正确');
+            return this.$message.error("登录失败，请检查用户名密码是否正确");
           } else {
-            return this.$message({ message: '登录成功', type: 'success' });
+            /**
+             * 1. 登录成功后，将 token 信息保存到客户端的 sessionStorage 中
+             * 这样确保了项目中的其他需要登录状态的API接口能够使用
+             * token只应该在网站打开期间生效，因此保存在 sessionStorage 中
+             * 2. 通过编程式导航对象，跳转到主页
+             */
+            window.sessionStorage.setItem("token", res.data.token);
+            this.$message({ message: "登录成功", type: "success" });
+            this.$router.push("/home");
           }
         } else {
           console.log("登录表单验证失败");
