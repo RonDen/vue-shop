@@ -18,7 +18,7 @@
           </el-form-item>
           <!-- 用户按钮区域 -->
           <el-form-item class="btns">
-            <el-button type="primary">登录</el-button>
+            <el-button type="primary" @click="login">登录</el-button>
             <el-button type="info" @click="resetLoginForm">重置</el-button>
           </el-form-item>
         </el-form>
@@ -66,6 +66,17 @@ export default {
     resetLoginForm() {
       // console.log(this);
       this.$refs.loginFormRef.resetFields();
+    },
+    // 点击登录按钮，进行表单验证和登录
+    login() {
+      this.$refs.loginFormRef.validate((valid) => {
+        if (valid) {
+          console.log("验证成功");
+        } else {
+          console.log("验证失败");
+          return false;
+        }
+      });
     },
   },
 };
