@@ -7,14 +7,26 @@
       </div>
       <div>
         <!-- 登录表单区域 -->
-        <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" class="login_form">
+        <el-form
+          ref="loginFormRef"
+          :model="loginForm"
+          :rules="loginFormRules"
+          class="login_form"
+        >
           <!-- 用户名输入框 -->
           <el-form-item prop="username">
-            <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
+            <el-input
+              v-model="loginForm.username"
+              prefix-icon="el-icon-user"
+            ></el-input>
           </el-form-item>
           <!-- 用户密码输入框 -->
           <el-form-item prop="password">
-            <el-input v-model="loginForm.password" prefix-icon="el-icon-lock" type="password"></el-input>
+            <el-input
+              v-model="loginForm.password"
+              prefix-icon="el-icon-lock"
+              type="password"
+            ></el-input>
           </el-form-item>
           <!-- 用户按钮区域 -->
           <el-form-item class="btns">
@@ -34,7 +46,7 @@ export default {
       // 登录表单的数据绑定对象
       loginForm: {
         username: "zhangsan",
-        password: "123",
+        password: "123"
       },
       // 验证表单是否合法规则对象
       loginFormRules: {
@@ -45,8 +57,8 @@ export default {
             min: 3,
             max: 10,
             message: "长度在 3 到 10 个字符",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
@@ -54,10 +66,10 @@ export default {
             min: 6,
             max: 15,
             message: "长度在 6 到 15 个字符",
-            trigger: "blur",
-          },
-        ],
-      },
+            trigger: "blur"
+          }
+        ]
+      }
     };
   },
 
@@ -69,16 +81,23 @@ export default {
     },
     // 点击登录按钮，进行表单验证和登录
     login() {
-      this.$refs.loginFormRef.validate((valid) => {
+      this.$refs.loginFormRef.validate(async valid => {
         if (valid) {
-          console.log("验证成功");
+          // 验证成功，使用axios发送登录请求
+          const { data: res } = await this.$http.post("login", this.loginForm);
+          console.log(res);
+          if (res.meta.status !== 200) {
+            console.log("登录失败");
+          } else {
+            console.log("登录成功");
+          }
         } else {
-          console.log("验证失败");
+          console.log("登录表单验证失败");
           return false;
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
