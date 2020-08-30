@@ -87,9 +87,9 @@ export default {
           const { data: res } = await this.$http.post("login", this.loginForm);
           console.log(res);
           if (res.meta.status !== 200) {
-            console.log("登录失败");
+            return this.$message.error('登录失败，请检查用户名密码是否正确');
           } else {
-            console.log("登录成功");
+            return this.$message({ message: '登录成功', type: 'success' });
           }
         } else {
           console.log("登录表单验证失败");
