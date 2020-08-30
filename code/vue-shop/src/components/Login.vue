@@ -7,14 +7,14 @@
       </div>
       <div>
         <!-- 登录表单区域 -->
-        <el-form class="login_form">
+        <el-form :model="loginForm" class="login_form">
           <!-- 用户名输入框 -->
           <el-form-item>
-            <el-input> </el-input>
+            <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
           </el-form-item>
           <!-- 用户密码输入框 -->
           <el-form-item>
-            <el-input> </el-input>
+            <el-input v-model="loginForm.password" prefix-icon="el-icon-lock" type="password"></el-input>
           </el-form-item>
           <!-- 用户按钮区域 -->
           <el-form-item class="btns">
@@ -28,7 +28,17 @@
 </template>
 
 <script>
-// export default {};
+export default {
+  data() {
+    return {
+      // 登录表单的数据绑定对象
+      loginForm: {
+        username: "zhangsan",
+        password: "123",
+      },
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
