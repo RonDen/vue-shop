@@ -45,49 +45,49 @@ export default {
     return {
       // 登录表单的数据绑定对象
       loginForm: {
-        username: "admin",
-        password: "123456"
+        username: 'admin',
+        password: '123456'
       },
       // 验证表单是否合法规则对象
       loginFormRules: {
         // 用户名与密码合法性规则，类型为对象数组
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           {
             min: 3,
             max: 10,
-            message: "长度在 3 到 10 个字符",
-            trigger: "blur"
+            message: '长度在 3 到 10 个字符',
+            trigger: 'blur'
           }
         ],
         password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
+          { required: true, message: '请输入密码', trigger: 'blur' },
           {
             min: 6,
             max: 15,
-            message: "长度在 6 到 15 个字符",
-            trigger: "blur"
+            message: '长度在 6 到 15 个字符',
+            trigger: 'blur'
           }
         ]
       }
-    };
+    }
   },
 
   methods: {
     // 点击重置按钮，重置登录表单
     resetLoginForm() {
       // console.log(this);
-      this.$refs.loginFormRef.resetFields();
+      this.$refs.loginFormRef.resetFields()
     },
     // 点击登录按钮，进行表单验证和登录
     login() {
       this.$refs.loginFormRef.validate(async valid => {
         if (valid) {
           // 验证成功，使用axios发送登录请求
-          const { data: res } = await this.$http.post("login", this.loginForm);
-          console.log(res);
+          const { data: res } = await this.$http.post('login', this.loginForm)
+          console.log(res)
           if (res.meta.status !== 200) {
-            return this.$message.error("登录失败，请检查用户名密码是否正确");
+            return this.$message.error('登录失败，请检查用户名密码是否正确')
           } else {
             /**
              * 1. 登录成功后，将 token 信息保存到客户端的 sessionStorage 中
@@ -95,18 +95,18 @@ export default {
              * token只应该在网站打开期间生效，因此保存在 sessionStorage 中
              * 2. 通过编程式导航对象，跳转到主页
              */
-            window.sessionStorage.setItem("token", res.data.token);
-            this.$message({ message: "登录成功", type: "success" });
-            this.$router.push("/home");
+            window.sessionStorage.setItem('token', res.data.token)
+            this.$message({ message: '登录成功', type: 'success' })
+            this.$router.push('/home')
           }
         } else {
-          console.log("登录表单验证失败");
-          return false;
+          console.log('登录表单验证失败')
+          return false
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
