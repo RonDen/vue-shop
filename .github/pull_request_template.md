@@ -6,7 +6,20 @@ Please do not create a Pull Request without creating an issue first.
 大型项目中，一般使用 Issue 来管理 bug 和开发周期，不要添加现存 Issue 之外的 pr，可能会导致发布混乱。可以先提出 issue 再提交 PR。
 "
 
+[^-^]: # "这里是一个填写的例子"
+[^-^]: # "建议用列表的形式或者分段文字描述的形式"
+[^-^]: # "我是一段注释，你看不见我"
+
+1. 添加了 XXX 功能
+2. 修复了这个[issue](https://github.com/RonDen/vue-shop/issues/4)中的问题
+3. 在文档中添加了架构图、UML 用例图，将`.jpg`格式的图片修改为了 PlanUML 格式
+4. ...
+
 ### 简短的 changelog
+
+1. 删除了 A 文件
+2. 添加了 B 文件
+3. 修改了 C 文件中的内容
 
 ### 修改的类别
 
