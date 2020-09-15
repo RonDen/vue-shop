@@ -1,3 +1,11 @@
+![license](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=LICENSE)
+![readme](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=README.md)
+![contributing](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=CONTRIBUTING.md)
+![coc](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=CODE_OF_CONDUCT.md)
+![codestyle](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=CODE_STYLE.md)
+![pulltemplate](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=.github/PULL_REQUEST_TEMPLATE.md)
+
+
 # vue-shop
 
 #### 介绍
