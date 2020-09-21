@@ -1,10 +1,12 @@
+## 如何使用 Issue 功能
+
 第六期（issues）
 
 ### 实操基础
 
-issue的构成：标题title、内容body、评论comments、标签labels、指派者assignees、所属项目看板project、里程碑milestone
+issue 的构成：标题 title、内容 body、评论 comments、标签 labels、指派者 assignees、所属项目看板 project、里程碑 milestone
 
-issue的典型功能：提问、交流、提bug、提需求
+issue 的典型功能：提问、交流、提 bug、提需求
 
 ### 理论基础
 
@@ -18,37 +20,35 @@ issue的典型功能：提问、交流、提bug、提需求
 
 > 优点：所有信息都沉淀下来、可检索、沉淀信息可为后来人提供有效的查阅路径
 
-
-
 ### 实操进阶
 
 如何降低总体的沟通成本？（开源社区互惠互利、谁也不欠谁！！！）
 
 开发者
 
-提issue之前先搜索一下有无相关历史issue
+提 issue 之前先搜索一下有无相关历史 issue
 
 提交的内容尽量详实充分
 
-> 例如如果是bug，说明运行环境、参数配置等
+> 例如如果是 bug，说明运行环境、参数配置等
 >
 > 最好可以提供日志或最小可复现仓库
 
 维护者
 
-维护良好的社区沟通环境code_of_conduct.md
+维护良好的社区沟通环境 code_of_conduct.md
 
-> 提供有效的沟通指引contributing.md
+> 提供有效的沟通指引 contributing.md
 >
 > 使用模板指引开发者提供更全面的信息
 >
-> 有效的流程设计使issue可以被更快的响应
+> 有效的流程设计使 issue 可以被更快的响应
 >
 > > 制度与流程、自动化
 
-作业：添加issue_template,md
+作业：添加 issue_template,md
 
-### 理论进阶（管理学视角下的issue流程）
+### 理论进阶（管理学视角下的 issue 流程）
 
 管理学的主要目的
 
