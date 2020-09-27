@@ -4,6 +4,7 @@
 ![coc](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=CODE_OF_CONDUCT.md)
 ![codestyle](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=CODE_STYLE.md)
 ![pulltemplate](http://github.zhangqx.com/file-checker/github/RonDen/vue-shop?path=.github/PULL_REQUEST_TEMPLATE.md)
+![ci_building](https://travis-ci.org/RonDen/vue-shop.svg?branch=master)
 
 # vue-shop
 
