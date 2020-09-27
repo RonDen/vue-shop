@@ -4,4 +4,3 @@ node_js:
   - 14
 script:
   - cd backend/vue-api-server
-  - cd frontend/vue-shop
