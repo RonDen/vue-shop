@@ -13,7 +13,7 @@
 
 学习目标：入门前端 vue 开发，了解前后端分离技术。
 
-![](img/front-back-sep.png)
+![front-back-end-sep](img/front-back-sep.png)
 
 ### 项目结构
 
@@ -105,7 +105,7 @@ npm run serve
 
 ## 参考资源
 
-本项目参考了一下资料和有用的学习资源，希望大家一起学习，共同进步！
+本项目参考了以下资料和并分享了一些有用的学习资源，希望大家一起学习，共同进步！
 
 [B 站学习课程](https://www.bilibili.com/video/av90846070)
 
