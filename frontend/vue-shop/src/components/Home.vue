@@ -26,7 +26,11 @@
           :default-active="activePath"
         >
           <!-- 一级菜单 -->
-          <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
+          <el-submenu
+            :index="item.id + ''"
+            v-for="item in menulist"
+            :key="item.id"
+          >
             <!-- 一级菜单的模板区域 -->
             <template slot="title">
               <!-- 图标 -->
@@ -68,11 +72,11 @@ export default {
       menulist: [],
       // 图标列表
       iconsObj: {
-        '125': 'iconfont icon-user',
-        '103': 'iconfont icon-tijikongjian',
-        '101': 'iconfont icon-shangpin',
-        '102': 'iconfont icon-danju',
-        '145': 'iconfont icon-baobiao',
+        125: 'iconfont icon-user',
+        103: 'iconfont icon-tijikongjian',
+        101: 'iconfont icon-shangpin',
+        102: 'iconfont icon-danju',
+        145: 'iconfont icon-baobiao',
       },
       // 左侧菜单是否折叠
       isCollapse: false,
@@ -81,6 +85,7 @@ export default {
   },
   created() {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activatePath')
   },
   methods: {
     logout() {
@@ -101,6 +106,7 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
     },
+    // 保存链接的激活状态
     saveNavState(activePath) {
       window.sessionStorage.setItem('activePath', activePath)
       this.activePath = activePath

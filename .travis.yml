@@ -2,5 +2,12 @@ language: node_js
 sudo: required
 node_js:
   - 14
+cache: npm
 script:
   - cd backend/vue-api-server
+
+branches:
+  only:
+    - master
+notifications:
+  email: true
