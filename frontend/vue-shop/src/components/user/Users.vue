@@ -25,7 +25,36 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      // 获取用户列表的参数对象
+      queryInfo: {
+        query: '',
+        pagenum: 1,
+        pagesize: 2,
+      },
+      userlist: [],
+      total: 0,
+    }
+  },
+  created() {
+    this.getUserList()
+  },
+  methods: {
+    async getUserList() {
+      const { data: res } = await this.$http.get('users', {
+        params: this.queryInfo,
+      })
+      if (res.meta.status !== 200) {
+        return this.$message.error('获取用户列表失败')
+      }
+      this.userlist = res.data.users
+      this.total = res.data.total
+      console.log(res)
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>
