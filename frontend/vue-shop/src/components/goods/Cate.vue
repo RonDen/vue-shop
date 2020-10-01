@@ -94,7 +94,6 @@
           <!-- options 用来指定数据源 -->
           <!-- props 用来指定配置对象 -->
           <el-cascader
-            expand-trigger="hover"
             :options="parentCateList"
             :props="cascaderProps"
             v-model="selectedKeys"
@@ -121,7 +120,7 @@ export default {
       querInfo: {
         type: 3,
         pagenum: 1,
-        pagesize: 5,
+        pagesize: 5
       },
       // 商品分类的数据列表，默认为空
       catelist: [],
@@ -131,29 +130,29 @@ export default {
       columns: [
         {
           label: '分类名称',
-          prop: 'cat_name',
+          prop: 'cat_name'
         },
         {
           label: '是否有效',
           // 表示，将当前列定义为模板列
           type: 'template',
           // 表示当前这一列使用模板名称
-          template: 'isok',
+          template: 'isok'
         },
         {
           label: '排序',
           // 表示，将当前列定义为模板列
           type: 'template',
           // 表示当前这一列使用模板名称
-          template: 'order',
+          template: 'order'
         },
         {
           label: '操作',
           // 表示，将当前列定义为模板列
           type: 'template',
           // 表示当前这一列使用模板名称
-          template: 'opt',
-        },
+          template: 'opt'
+        }
       ],
       // 控制添加分类对话框的显示与隐藏
       addCateDialogVisible: false,
@@ -164,13 +163,13 @@ export default {
         // 父级分类的Id
         cat_pid: 0,
         // 分类的等级，默认要添加的是1级分类
-        cat_level: 0,
+        cat_level: 0
       },
       // 添加分类表单的验证规则对象
       addCateFormRules: {
         cat_name: [
-          { required: true, message: '请输入分类名称', trigger: 'blur' },
-        ],
+          { required: true, message: '请输入分类名称', trigger: 'blur' }
+        ]
       },
       // 父级分类的列表
       parentCateList: [],
@@ -179,9 +178,10 @@ export default {
         value: 'cat_id',
         label: 'cat_name',
         children: 'children',
+        expandTrigger: 'hover'
       },
       // 选中的父级分类的Id数组
-      selectedKeys: [],
+      selectedKeys: []
     }
   },
   created() {
@@ -191,7 +191,7 @@ export default {
     // 获取商品分类数据
     async getCateList() {
       const { data: res } = await this.$http.get('categories', {
-        params: this.querInfo,
+        params: this.querInfo
       })
 
       if (res.meta.status !== 200) {
@@ -224,7 +224,7 @@ export default {
     // 获取父级分类的数据列表
     async getParentCateList() {
       const { data: res } = await this.$http.get('categories', {
-        params: { type: 2 },
+        params: { type: 2 }
       })
 
       if (res.meta.status !== 200) {
@@ -256,7 +256,7 @@ export default {
     },
     // 点击按钮，添加新的分类
     addCate() {
-      this.$refs.addCateFormRef.validate(async (valid) => {
+      this.$refs.addCateFormRef.validate(async valid => {
         if (!valid) return
         const { data: res } = await this.$http.post(
           'categories',
@@ -278,8 +278,8 @@ export default {
       this.selectedKeys = []
       this.addCateForm.cat_level = 0
       this.addCateForm.cat_pid = 0
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -289,6 +289,7 @@ export default {
 }
 
 .el-cascader {
+  height: 50%;
   width: 100%;
 }
 </style>

@@ -23,7 +23,6 @@
           <span>选择商品分类：</span>
           <!-- 选择商品分类的级联选择框 -->
           <el-cascader
-            expand-trigger="hover"
             :options="catelist"
             :props="cateProps"
             v-model="selectedCateKeys"
@@ -179,6 +178,7 @@ export default {
         value: 'cat_id',
         label: 'cat_name',
         children: 'children',
+        expandTrigger: 'hover'
       },
       // 级联选择框双向绑定到的数组
       selectedCateKeys: [],
@@ -192,13 +192,13 @@ export default {
       addDialogVisible: false,
       // 添加参数的表单数据对象
       addForm: {
-        attr_name: '',
+        attr_name: ''
       },
       // 添加表单的验证规则对象
       addFormRules: {
         attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' },
-        ],
+          { required: true, message: '请输入参数名称', trigger: 'blur' }
+        ]
       },
       // 控制修改对话框的显示与隐藏
       editDialogVisible: false,
@@ -207,9 +207,9 @@ export default {
       // 修改表单的验证规则对象
       editFormRules: {
         attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' },
-        ],
-      },
+          { required: true, message: '请输入参数名称', trigger: 'blur' }
+        ]
+      }
     }
   },
   created() {
@@ -250,7 +250,7 @@ export default {
       const { data: res } = await this.$http.get(
         `categories/${this.cateId}/attributes`,
         {
-          params: { sel: this.activeName },
+          params: { sel: this.activeName }
         }
       )
 
@@ -271,13 +271,13 @@ export default {
     },
     // 点击按钮，添加参数
     addParams() {
-      this.$refs.addFormRef.validate(async (valid) => {
+      this.$refs.addFormRef.validate(async valid => {
         if (!valid) return
         const { data: res } = await this.$http.post(
           `categories/${this.cateId}/attributes`,
           {
             attr_name: this.addForm.attr_name,
-            attr_sel: this.activeName,
+            attr_sel: this.activeName
           }
         )
 
@@ -296,7 +296,7 @@ export default {
       const { data: res } = await this.$http.get(
         `categories/${this.cateId}/attributes/${attr_id}`,
         {
-          params: { attr_sel: this.activeName },
+          params: { attr_sel: this.activeName }
         }
       )
 
@@ -313,10 +313,10 @@ export default {
     },
     // 点击按钮，修改参数信息
     editParams() {
-      this.$refs.editFormRef.validate(async (valid) => {
+      this.$refs.editFormRef.validate(async valid => {
         if (!valid) return
         const {
-          data: res,
+          data: res
         } = await this.$http.put(
           `categories/${this.cateId}/attributes/${this.editForm.attr_id}`,
           { attr_name: this.editForm.attr_name, attr_sel: this.activeName }
@@ -339,9 +339,9 @@ export default {
         {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }
-      ).catch((err) => err)
+      ).catch(err => err)
 
       // 用户取消了删除的操作
       if (confirmResult !== 'confirm') {
@@ -360,6 +360,52 @@ export default {
       this.$message.success('删除参数成功！')
       this.getParamsData()
     },
+    // 文本框失去焦点，或摁下了 Enter 都会触发
+    async handleInputConfirm(row) {
+      if (row.inputValue.trim().length === 0) {
+        row.inputValue = ''
+        row.inputVisible = false
+        return
+      }
+      // 如果没有return，则证明输入的内容，需要做后续处理
+      row.attr_vals.push(row.inputValue.trim())
+      row.inputValue = ''
+      row.inputVisible = false
+      // 需要发起请求，保存这次操作
+      this.saveAttrVals(row)
+    },
+    // 将对 attr_vals 的操作，保存到数据库
+    async saveAttrVals(row) {
+      // 需要发起请求，保存这次操作
+      const { data: res } = await this.$http.put(
+        `categories/${this.cateId}/attributes/${row.attr_id}`,
+        {
+          attr_name: row.attr_name,
+          attr_sel: row.attr_sel,
+          attr_vals: row.attr_vals.join(' ')
+        }
+      )
+
+      if (res.meta.status !== 200) {
+        return this.$message.error('修改参数项失败！')
+      }
+
+      this.$message.success('修改参数项成功！')
+    },
+    // 点击按钮，展示文本输入框
+    showInput(row) {
+      row.inputVisible = true
+      // 让文本框自动获得焦点
+      // $nextTick 方法的作用，就是当页面上元素被重新渲染之后，才会指定回调函数中的代码
+      this.$nextTick(_ => {
+        this.$refs.saveTagInput.$refs.input.focus()
+      })
+    },
+    // 删除对应的参数可选项
+    handleClose(i, row) {
+      row.attr_vals.splice(i, 1)
+      this.saveAttrVals(row)
+    }
   },
   computed: {
     // 如果按钮需要被禁用，则返回true，否则返回false
@@ -382,13 +428,21 @@ export default {
         return '动态参数'
       }
       return '静态属性'
-    },
-  },
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
 .cat_opt {
   margin: 15px 0;
+}
+
+.el-tag {
+  margin: 10px;
+}
+
+.input-new-tag {
+  width: 120px;
 }
 </style>

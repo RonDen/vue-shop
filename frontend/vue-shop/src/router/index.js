@@ -25,7 +25,7 @@ const routes = [{
   redirect: '/welcome',
   children: [{
     path: '/welcome',
-    component: Welcome,
+    component: Welcome
   }, {
     path: '/users',
     component: Users
@@ -62,14 +62,14 @@ const router = new VueRouter({
  */
 router.beforeEach((to, from, next) => {
   // 获取token
-  const tokenStr = window.sessionStorage.getItem("token");
+  const tokenStr = window.sessionStorage.getItem('token')
   if (to.path === '/login') {
-    if (!tokenStr) return next();
-    else return next(from);
+    if (!tokenStr) return next()
+    else return next(from)
     // return next();
   }
-  if (!tokenStr) return next('/login');
-  return next();
-});
+  if (!tokenStr) return next('/login')
+  return next()
+})
 
 export default router
