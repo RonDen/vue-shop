@@ -80,6 +80,7 @@ export default {
       },
       // 左侧菜单是否折叠
       isCollapse: false,
+      // 被激活的链接地址
       activePath: '',
     }
   },

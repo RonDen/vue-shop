@@ -33,7 +33,7 @@
       </el-row>
 
       <!-- 用户列表区域 -->
-      <el-table>
+      <el-table :data="userlist" border stripe>
         <el-table-column type="index"></el-table-column>
         <el-table-column label="姓名" prop="username"></el-table-column>
         <el-table-column label="邮箱" prop="email"></el-table-column>
@@ -55,12 +55,14 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
+              @click="showEditDialog(scope.row.id)"
             ></el-button>
             <!-- 删除按钮 -->
             <el-button
               type="danger"
               icon="el-icon-delete"
               size="mini"
+              @click="removeUserById(scope.row.id)"
             ></el-button>
             <!-- 分配角色按钮 -->
             <el-tooltip
@@ -73,6 +75,7 @@
                 type="warning"
                 icon="el-icon-setting"
                 size="mini"
+                @click="setRole(scope.row)"
               ></el-button>
             </el-tooltip>
           </template>
@@ -242,12 +245,12 @@ export default {
       editFormRules: {
         email: [
           { required: true, message: '请输入用户邮箱', trigger: 'blur' },
-          { validator: checkEmail, trigger: 'blur' }
+          { validator: checkEmail, trigger: 'blur' },
         ],
         mobile: [
           { required: true, message: '请输入用户手机', trigger: 'blur' },
-          { validator: checkMobile, trigger: 'blur' }
-        ]
+          { validator: checkMobile, trigger: 'blur' },
+        ],
       },
       // 控制分配角色对话框的显示与隐藏
       setRoleDialogVisible: false,
@@ -256,7 +259,7 @@ export default {
       // 所有角色的数据列表
       rolesList: [],
       // 已选中的角色Id值
-      selectedRoleId: ''
+      selectedRoleId: '',
     }
   },
   created() {
@@ -339,14 +342,14 @@ export default {
     },
     // 修改用户信息并提交
     editUserInfo() {
-      this.$refs.editFormRef.validate(async valid => {
+      this.$refs.editFormRef.validate(async (valid) => {
         if (!valid) return
         // 发起修改用户信息的数据请求
         const { data: res } = await this.$http.put(
           'users/' + this.editForm.id,
           {
             email: this.editForm.email,
-            mobile: this.editForm.mobile
+            mobile: this.editForm.mobile,
           }
         )
 
@@ -371,9 +374,9 @@ export default {
         {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
         }
-      ).catch(err => err)
+      ).catch((err) => err)
 
       // 如果用户确认删除，则返回值为字符串 confirm
       // 如果用户取消了删除，则返回值为字符串 cancel
@@ -414,7 +417,7 @@ export default {
       const { data: res } = await this.$http.put(
         `users/${this.userInfo.id}/role`,
         {
-          rid: this.selectedRoleId
+          rid: this.selectedRoleId,
         }
       )
 
@@ -430,7 +433,7 @@ export default {
     setRoleDialogClosed() {
       this.selectedRoleId = ''
       this.userInfo = {}
-    }
+    },
   },
 }
 </script>
