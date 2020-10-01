@@ -10,12 +10,14 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "echarts": "^4.9.0",
     "element-ui": "^2.4.5",
     "less": "^3.12.2",
     "less-loader": "^7.0.0",
+    "lodash": "^4.17.20",
     "vue": "^2.6.11",
-    "vue-quill-editor": "^3.0.6",
     "vue-axios": "^2.1.5",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.2.0",
     "vue-table-with-tree-grid": "^0.2.4"
   },
