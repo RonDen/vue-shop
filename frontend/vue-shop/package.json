@@ -14,8 +14,10 @@
     "less": "^3.12.2",
     "less-loader": "^7.0.0",
     "vue": "^2.6.11",
+    "vue-quill-editor": "^3.0.6",
     "vue-axios": "^2.1.5",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-table-with-tree-grid": "^0.2.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
