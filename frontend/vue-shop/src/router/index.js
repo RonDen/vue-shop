@@ -6,6 +6,8 @@ import Welcome from '../components/Welcome.vue'
 import Users from '../components/user/Users.vue'
 import Cate from '../components/goods/Cate.vue'
 import Params from '../components/goods/Params.vue'
+import GoodList from '../components/goods/List.vue'
+import Add from '../components/goods/Add.vue'
 import Right from '../components/power/Right.vue'
 import Roles from '../components/power/Roles.vue'
 
@@ -31,14 +33,20 @@ const routes = [{
     path: '/rights',
     component: Right
   }, {
-    path: 'roles',
+    path: '/roles',
     component: Roles
   }, {
-    path: 'categories',
+    path: '/categories',
     component: Cate
   }, {
-    path: 'params',
+    path: '/params',
     component: Params
+  }, {
+    path: '/goods',
+    component: GoodList
+  }, {
+    path: '/goods/add',
+    component: Add
   }]
 }]
 
