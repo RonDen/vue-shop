@@ -24,6 +24,7 @@ import {
   Select,
   Switch,
   Tooltip,
+  Tag,
 } from 'element-ui'
 
 Vue.use(Button)
@@ -49,4 +50,5 @@ Vue.use(Dialog)
 Vue.use(Select)
 Vue.use(Switch)
 Vue.use(Tooltip)
+Vue.use(Tag)
 Vue.prototype.$message = Message
